@@ -1,0 +1,141 @@
+@import '../../App';
+
+.Menu {
+  height: 100vh;
+  background-color: $colorWhite;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+
+  &__show {
+    transform: translateX(0);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $colorBorder;
+    margin-bottom: 24px;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-img {
+      padding: 10px 16px;
+      transition: 0.3s transform;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 7px;
+    flex-direction: column;
+    align-items: center;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      height: 27px;
+      color: $colorGray;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: 0.3s color;
+
+      &:hover {
+        color: $colorBlack;
+      }
+
+      &-active {
+        position: relative;
+        color: $colorBlack;
+
+        &::after {
+          @include after-line;
+
+          height: 2px;
+        }
+      }
+    }
+  }
+
+  &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid $colorBorder;
+
+    &-icon {
+      padding: 15px;
+      transition: 0.3s transform;
+
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+  }
+
+  &__desire {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    border: 1px solid $colorBorder;
+
+    &-item {
+      position: relative;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: 1px solid $colorBorder;
+      line-height: 64;
+      transition: 0.3s background-color;
+
+      &:hover {
+        background-color: $colorBorder;
+      }
+
+      &--active {
+        &::after {
+          @include after-line;
+
+          height: 2px;
+        }
+      }
+    }
+
+    &-amount {
+      position: absolute;
+      left: 50%;
+      bottom: 29px;
+      text-align: center;
+      background-color: $colorRed;
+      border: 1px solid $colorWhite;
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+      line-height: 14px;
+      border-radius: 50%;
+      color: $colorWhite;
+    }
+  }
+}

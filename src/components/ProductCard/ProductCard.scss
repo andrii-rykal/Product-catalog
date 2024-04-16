@@ -1,0 +1,136 @@
+@import '../../App';
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 272px;
+  height: 507px;
+  padding: 32px;
+  border: 1px solid $colorBorder;
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__photo {
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+    transition: 0.3s transform;
+  }
+
+  &__product-name {
+    height: 58px;
+    padding: 16px 0 0;
+    overflow: hidden;
+    line-height: 21px;
+    color: $colorBlack;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 22px;
+
+    &-current {
+      font-weight: 700;
+      line-height: 31px;
+      color: $colorBlack;
+    }
+
+    &-full {
+      font-weight: 500;
+      line-height: 28px;
+      color: $colorGray;
+      text-decoration: line-through;
+    }
+  }
+
+  &__line {
+    border: 1px solid $colorBorder;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &-text {
+      text-align: left;
+      color: $colorGray;
+    }
+
+    &-value {
+      text-align: right;
+      color: $colorBlack;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    min-height: 40px;
+
+    &-add {
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      color: $colorWhite;
+      background-color: $colorBlack;
+      transition: 0.3s box-shadow;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
+    }
+
+    &-added {
+      width: 100%;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      color: #27AE60;
+      background-color: $colorWhite;
+      border: 1px solid $colorBorder;
+    }
+
+    &-favorite {
+      cursor: pointer;
+      min-width: 40px;
+      background-color: $colorWhite;
+      border: 1px solid $colorBorderArrow;
+      transition: 0.3s border-color;
+
+      &-icon {
+        margin: 0 auto;
+      }
+
+      &:hover {
+        border-color: $colorBlack;
+      }
+    }
+  }
+}
+

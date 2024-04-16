@@ -1,0 +1,19 @@
+@import '../../App';
+
+.ButtonBack {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: color 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    color: $colorBlack;
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+}

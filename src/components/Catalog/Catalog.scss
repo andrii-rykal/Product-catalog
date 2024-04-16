@@ -1,0 +1,235 @@
+@import '../../App';
+
+.Catalog {
+  margin: 0 0 64px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $colorBlack;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    line-height: 21px;
+    margin-bottom: 32px;
+  }
+
+  &__search {
+    position: fixed;
+    z-index: 1;
+    top: 1px;
+    right: 50px;
+
+    @include on-tablet {
+      right: 100px;
+    }
+
+    @include on-desktop {
+      right: 130px;
+    }
+
+    &-field {
+      width: 300px;
+      font-family: inherit;
+      font-size: inherit;
+      outline: none;
+      font-weight: 600;
+      line-height: 21px;
+      color: $colorBlack;
+      border: none;
+      border-left: 1px solid $colorBorder;
+      padding: 0 0 0 5px;
+      height: calc(var(--height-header-tablet) - 1px);
+
+      @include on-tablet {
+        width: 90px;
+      }
+
+      @media (min-width: 750px) {
+        width: 150px;
+      }
+
+      @include on-big-tablet {
+        width: 330px;
+      }
+
+      @include on-desktop {
+        height: calc(var(--height-header-desktop) - 1px);
+      }
+    }
+
+    &-clearSearch {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__choose {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    &-item {
+      width: 100%;
+      max-width: 170px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      &--sort {
+        @include on-tablet {
+          max-width: 187px;
+        }
+
+        @include on-desktop {
+          max-width: 176px;
+        }
+      }
+
+      &--amount {
+        @include on-desktop {
+          max-width: 128px;
+        }
+      }
+    }
+
+    &-label {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &-select {
+      font-family: inherit;
+      font-size: inherit;
+      outline: none;
+      appearance: none;
+      background: url(../../../public/icons/Arrow_down.svg) no-repeat right;
+      background-position-x: calc(100% - 18px);
+      padding-left: 12px;
+      height: 40px;
+      border: 1px solid $colorBorderArrow;
+      font-weight: 600;
+      line-height: 21px;
+      color: $colorBlack;
+    }
+  }
+
+  &__content {
+    @include page-grid;
+
+    gap: 40px 16px;
+    margin-bottom: 24px;
+
+    &-item {
+      grid-column: 1 / -1;
+      justify-self: center;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+
+      @include on-big-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+      }
+    }
+  }
+
+  &__page {
+    &-number {
+      display: flex;
+      justify-content: center;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 16px;
+
+      &-item {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        height: 100%;
+        width: 32px;
+        background-color: $colorWhite;
+        border: 1px solid $colorBorderArrow;
+        transition: 0.3s border-color;
+
+        &:hover {
+          border-color: $colorBlack;
+        }
+
+        &:disabled {
+          border-color: $colorBorder;
+        }
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      &-item {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        background-color: $colorWhite;
+        border: 1px solid #e2e6e9;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 500;
+        line-height: 32px;
+        text-align: center;
+        color: $colorBlack;
+        transition: 0.3s border-color;
+
+        &--active {
+          background-color: $colorBlack;
+          color: $colorWhite;
+        }
+
+        &:hover {
+          border-color: $colorBlack;
+        }
+      }
+    }
+  }
+}
+
+.Error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 0, 0, 0.3);
+  padding: 10px;
+
+  &__text {
+    color: #f00;
+  }
+
+  &__reload {
+    padding: 5px;
+    border: 1px solid;
+    transition: 0.3s all;
+
+    &:hover {
+      border-color: $colorBlack;
+      color: $colorBlack;
+    }
+  }
+}

@@ -1,21 +1,37 @@
-import React from 'react';
-import './App.scss';
+import { Outlet } from 'react-router-dom';
+import React, { useContext } from 'react';
+import classNames from 'classnames';
 
-interface Props {
-  onClick: () => void;
-  children: React.ReactNode;
-}
-
-export const Provider: React.FC<Props> = React.memo(({ onClick, children }) => (
-  <button type="button" onClick={onClick}>
-    {children}
-  </button>
-));
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { Menu } from './components/Menu';
+import { StateContext } from './store/ProductsContext';
+import { Loader } from './components/Loader';
 
 export const App: React.FC = () => {
+  const { isShowMenu, hieghtFooter, hieghtHeader, loading } =
+    useContext(StateContext);
+  const hieght = hieghtFooter + hieghtHeader;
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>TodoList</Provider>
+    <div className={classNames('App', { 'overflow-menu': isShowMenu })}>
+      <Header />
+      <Menu />
+
+      <div
+        className="container"
+        style={{
+          minHeight: `calc(100vh - ${hieght}px)`,
+        }}
+      >
+        <Outlet />
+      </div>
+
+      <Footer />
     </div>
   );
 };

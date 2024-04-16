@@ -1,0 +1,187 @@
+@import '../../App';
+
+.Header {
+  height: var(--height-header-tablet);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $colorBorder;
+  border-top: 1px solid $colorBorder;
+  background-color: $colorWhite;
+
+  @include on-desktop {
+    height: var(--height-header-desktop);
+  }
+
+  &__menu {
+    display: flex;
+    width: 48px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 0 0 0 $colorBorder;
+
+    @include on-tablet {
+      display: none;
+    }
+
+
+    &-item {
+      padding: 15px;
+      background-color: $colorWhite;
+      border-color: $colorBorder;
+
+      &:hover {
+        img {
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    &-img {
+      transition: 0.3s transform;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__logo {
+    padding-left: 24px;
+
+    &-img {
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+
+      transition: 0.3s transform;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    @include on-desktop {
+      gap: 44px;
+    }
+
+    &-link {
+      padding: 15px 5px;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $colorGray;
+      font-weight: bold;
+      font-size: 12px;
+
+      @include on-desktop {
+        padding: 20px 10px;
+      }
+
+      transition: 0.3s color;
+
+      &:hover {
+        color: $colorBlack;
+      }
+
+      &-active {
+        position: relative;
+        color: $colorBlack;
+        line-height: var(--height-header-tablet);
+        padding: 0 5px;
+
+        @include on-desktop {
+          line-height: var(--height-header-desktop);
+          padding: 0 10px;
+        }
+
+        &::after {
+          @include after-line;
+
+          height: 3px;
+        }
+      }
+    }
+  }
+
+  &__desire {
+    display: flex;
+
+    &-item {
+      padding: 0 10px;
+      align-items: center;
+      position: relative;
+      display: none;
+      text-decoration: none;
+
+      @include on-tablet {
+        display: flex;
+        width: 48px;
+        justify-content: center;
+        box-shadow: -1px 0 0 0 $colorBorder;
+      }
+
+      @include on-desktop {
+        width: 64px;
+      }
+
+      transition: 0.3s background-color;
+
+      &:hover {
+        background-color: $colorBorder;
+      }
+
+      &--active {
+        line-height: var(--height-header-tablet);
+
+        @include on-desktop {
+          line-height: var(--height-header-desktop);
+        }
+
+        &::after {
+          @include after-line;
+
+          height: 3px;
+        }
+      }
+    }
+
+    &-amount {
+      position: absolute;
+      left: 24px;
+      bottom: 23px;
+      text-align: center;
+      background-color: $colorRed;
+      border: 1px solid $colorWhite;
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+      line-height: 14px;
+      border-radius: 50%;
+      color: $colorWhite;
+
+      @include on-desktop {
+        left: 32px;
+        bottom: 29px;
+      }
+    }
+  }
+}
