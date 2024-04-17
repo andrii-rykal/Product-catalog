@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Product } from '../../type/Product';
 import './ProductCard.scss';
 import { DispatchContext, StateContext } from '../../store/ProductsContext';
@@ -16,14 +16,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const ram = product.ram.replace('GB', ' GB');
 
   const isFan = favourites.some(fav => fav.itemId === product.itemId);
-
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
-    localStorage.setItem('favorite', JSON.stringify(favourites));
-  }, [favourites]);
 
   const handleFanClick = () => {
     const type = isFan ? 'deleteFavourites' : 'addFavourites';

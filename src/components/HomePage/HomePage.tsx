@@ -7,7 +7,6 @@ import { Categories } from '../Categories';
 
 export const HomePage: React.FC = () => {
   const { products } = useContext(StateContext);
-  // const size = useWindowSize();
 
   const hotProducts = products.filter(
     product => product.fullPrice - product.price !== 0,

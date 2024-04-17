@@ -56,6 +56,14 @@ export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    localStorage.setItem('favorite', JSON.stringify(state.favourites));
+  }, [state.favourites]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(state.cart));
+  }, [state.cart]);
+
+  useEffect(() => {
     dispatch({ type: 'isLoading', payload: true });
     dispatch({ type: 'errorMessage', payload: '' });
     dispatch({ type: 'reload', payload: false });

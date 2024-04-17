@@ -17,13 +17,5 @@ export function getSearchWith(
     }
   });
 
-  // for (const [key, value] of Object.entries(params)) {
-  //   if (value === null) {
-  //     newParams.delete(key);
-  //   } else {
-  //     newParams.set(key, value.toString());
-  //   }
-  // }
-
   return newParams.toString();
 }
