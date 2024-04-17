@@ -67,13 +67,15 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
+  const addedToCart = cart.some(c => c.itemId === details?.id);
+
   const handleCartClick = () => {
     if (details) {
-      dispatch({ type: 'addToCart', payload: details.id });
+      const type = addedToCart ? 'deleteFromCart' : 'addToCart';
+
+      dispatch({ type, payload: details.id });
     }
   };
-
-  const addedToCart = cart.some(c => c.itemId === details?.id);
 
   if (loading) {
     return <Loader />;
@@ -178,7 +180,11 @@ export const ProductDetailsPage: React.FC = () => {
                   Add to cart
                 </button>
               ) : (
-                <button type="button" className="Details__buttons-added">
+                <button
+                  type="button"
+                  className="Details__buttons-added"
+                  onClick={handleCartClick}
+                >
                   Added
                 </button>
               )}

@@ -10,6 +10,11 @@ export const Header: React.FC = () => {
   const { favourites, cart } = useContext(StateContext);
   const headerRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
+  let amountInCart = 0;
+
+  cart.forEach(c => {
+    amountInCart += c.quantity;
+  });
 
   useEffect(() => {
     if (headerRef.current) {
@@ -74,7 +79,7 @@ export const Header: React.FC = () => {
         <NavLink to="/cart" className={getDesireLinkClass}>
           <img src="icons/Cart.svg" alt="cart" height="16px" />
           {!!cart.length && (
-            <div className="Header__desire-amount">{cart.length}</div>
+            <div className="Header__desire-amount">{amountInCart}</div>
           )}
         </NavLink>
 

@@ -7,6 +7,11 @@ import { DispatchContext, StateContext } from '../../store/ProductsContext';
 export const Menu: React.FC = () => {
   const dispatch = useContext(DispatchContext);
   const { isShowMenu, favourites, cart } = useContext(StateContext);
+  let amountInCart = 0;
+
+  cart.forEach(c => {
+    amountInCart += c.quantity;
+  });
 
   if (isShowMenu) {
     document.body.style.overflow = 'hidden';
@@ -103,7 +108,7 @@ export const Menu: React.FC = () => {
         >
           <img src="icons/Cart.svg" alt="cart" />
           {!!cart.length && (
-            <div className="Menu__desire-amount">{cart.length}</div>
+            <div className="Menu__desire-amount">{amountInCart}</div>
           )}
         </NavLink>
       </div>

@@ -23,11 +23,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     dispatch({ type, payload: product.itemId });
   };
 
-  const handleCartClick = () => {
-    dispatch({ type: 'addToCart', payload: product.itemId });
-  };
-
   const addedToCart = cart.some(c => c.itemId === product.itemId);
+
+  const handleCartClick = () => {
+    const type = addedToCart ? 'deleteFromCart' : 'addToCart';
+
+    dispatch({ type, payload: product.itemId });
+  };
 
   return (
     <div className="Card" data-cy="cardsContainer">
@@ -72,7 +74,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             Add to cart
           </button>
         ) : (
-          <button type="button" className="Card__buttons-added">
+          <button
+            type="button"
+            className="Card__buttons-added"
+            onClick={handleCartClick}
+          >
             Added
           </button>
         )}
